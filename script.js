@@ -1,10 +1,42 @@
-/* ---- TARGETS && INITIALIZERS ---- */
+/* ---- RUN ON LOAD && INITIALIZERS ---- */
+let lowerCaseArray;
+let upperCaseArray;
+let numbers;
+
+generateLowerCase();
+generateUpperCase();
+generateNumbers();
+
+console.log(lowerCaseArray);
+console.log(upperCaseArray);
+
 /* ---- SCRIPT ---- */
+
 /* ---- FUNCTIONS ---- */
 
-console.log("hello world");
+// Generate lowercase array
+function generateLowerCase() {
+  lowerCaseArray = Array.from({ length: 26 }, (_, index) =>
+    String.fromCharCode("a".charCodeAt(0) + index)
+  );
+  return lowerCaseArray;
+}
 
-//--- Global getElement function
+// Generate uppercase array
+function generateUpperCase() {
+  upperCaseArray = Array.from({ length: 26 }, (_, index) =>
+    String.fromCharCode("A".charCodeAt(0) + index)
+  );
+  return upperCaseArray;
+}
+
+// Generate number array
+function generateNumbers() {
+  numbers = Array.from(Array(10).keys());
+  return numbers;
+}
+
+// Global getElement function
 function getElement(selector) {
   const element = document.querySelector(selector);
   if (element) {
