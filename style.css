@@ -1,0 +1,50 @@
+/* --- RESET --- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* --- ROOT VARIABLES --- */
+:root {
+  --clr-bg: #121118;
+  --clr-lightGrey: #24232c;
+  --clr-strongGrey: #18171f;
+  --clr-txt-primary: #e6e5ea;
+  --clr-txt-secondary: #817d92;
+  --clr-accent: #a4ffaf;
+  --clr-warning: #fb7c58;
+  --clr-negative: #f64a4a;
+  --font: "JetBrains Mono", monospace;
+  --inspect: solid red 1px;
+  --transition: 250ms ease;
+}
+
+/* --- MAIN CSS --- */
+body {
+  min-height: 100vh;
+  font-family: var(--font);
+}
+
+.heading-large {
+  font-size: 32px;
+  line-height: 43px;
+  font-weight: 700;
+}
+
+.heading-medium {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 700;
+}
+
+.body-txt {
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 600;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media screen and (max-width: 450px) {
+  /* some class */
+}
