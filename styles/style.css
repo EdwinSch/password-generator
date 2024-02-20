@@ -119,6 +119,37 @@ form {
     gap: 45px;
   }
 
+  .strength-container {
+    padding: 25px 35px;
+    background-color: var(--clr-strongGrey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+      color: var(--clr-txt-secondary);
+      text-transform: uppercase;
+    }
+
+    .meter-container {
+      display: flex;
+      align-items: center;
+
+      & h3 {
+        margin-right: 10px;
+        color: var(--clr-txt-primary);
+        text-transform: uppercase;
+      }
+
+      .led {
+        margin-left: 8px;
+        width: 10px;
+        height: 28px;
+        border: solid white 2px;
+      }
+    }
+  }
+
   .submit-btn {
     width: 100%;
     padding: 23px 0;
