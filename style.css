@@ -24,6 +24,15 @@
 body {
   min-height: 100vh;
   font-family: var(--font);
+  background-color: var(--clr-bg);
+  display: grid;
+  place-items: center;
+}
+
+main {
+  border: var(--inspect);
+  width: 100vw;
+  max-width: 540px;
 }
 
 .heading-large {
@@ -42,6 +51,52 @@ body {
   font-size: 18px;
   line-height: 23px;
   font-weight: 600;
+  color: var(--clr-txt-primary);
+}
+
+/* --- HEADER --- */
+h1 {
+  color: var(--clr-txt-secondary);
+  text-align: center;
+}
+
+/* OUTPUT COMPONENT */
+.output-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 0 25px 0;
+  padding: 25px 35px;
+  background-color: var(--clr-lightGrey);
+
+  .output {
+    color: var(--clr-txt-primary);
+  }
+
+  .clipboard-btn {
+    color: var(--clr-accent);
+    font-size: 24px;
+    height: fit-content;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* --- FORM COMPONENT --- */
+form {
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h2 {
+      text-transform: capitalize;
+    }
+    .length-output {
+      color: var(--clr-accent);
+    }
+  }
 }
 
 /* --- MOBILE RESPONSIVE --- */

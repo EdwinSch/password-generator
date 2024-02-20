@@ -27,6 +27,52 @@
   </head>
 
   <body>
-    <h1>Hello World</h1>
+    <main>
+      <!-- HEADING -->
+      <h1 class="heading-medium">Password Generator</h1>
+
+      <!-- GENERATOR OUTPUT -->
+      <div class="output-container">
+        <p class="output heading-large">PTx1f5DaFX</p>
+        <button id="clipboard-btn" class="clipboard-btn" type="button">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+
+      <!-- FORM -->
+      <form id="form">
+        <!-- INPUT -->
+        <div class="form-header">
+          <h2 class="body-txt">character length</h2>
+          <p class="length-output heading-large">20</p>
+        </div>
+        <input
+          type="range"
+          id="lengthInput"
+          name="length"
+          min="4"
+          max="20"
+          required
+        />
+
+        <!-- OPTIONS -->
+        <div class="options-container">
+          <input type="checkbox" id="uppercase" name="uppercase" />
+          <label for="uppercase">include uppercase letters</label><br />
+          <input type="checkbox" id="lowercase" name="lowercase" />
+          <label for="lowercase">include lowercase letters</label><br />
+          <input type="checkbox" id="numbers" name="numbers" />
+          <label for="numbers">include numbers</label><br />
+        </div>
+
+        <!-- SUBMIT -->
+        <input
+          id="submit"
+          class="submit"
+          type="submit"
+          value="generate password"
+        />
+      </form>
+    </main>
   </body>
 </html>

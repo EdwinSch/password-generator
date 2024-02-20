@@ -7,9 +7,6 @@ generateLowerCase();
 generateUpperCase();
 generateNumbers();
 
-console.log(lowerCaseArray);
-console.log(upperCaseArray);
-
 /* ---- SCRIPT ---- */
 
 /* ---- FUNCTIONS ---- */
