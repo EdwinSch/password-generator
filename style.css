@@ -1,3 +1,5 @@
+@import url(./slider-style.css);
+
 /* --- RESET --- */
 * {
   padding: 0;
@@ -30,8 +32,7 @@ body {
 }
 
 main {
-  border: var(--inspect);
-  width: 100vw;
+  width: 95vw;
   max-width: 540px;
 }
 
@@ -80,11 +81,22 @@ h1 {
     background: transparent;
     border: none;
     cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--clr-txt-primary);
+    }
   }
 }
 
 /* --- FORM COMPONENT --- */
 form {
+  padding: 25px 35px;
+  background-color: var(--clr-lightGrey);
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
   .form-header {
     display: flex;
     justify-content: space-between;
@@ -95,6 +107,28 @@ form {
     }
     .length-output {
       color: var(--clr-accent);
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 23px 0;
+    text-transform: uppercase;
+    color: var(--clr-strongGrey);
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: var(--clr-accent);
+    border: solid var(--clr-accent) 2px;
+    cursor: pointer;
+    transition: var(--transition);
+
+    .fa-arrow-right {
+      margin-left: 20px;
+    }
+
+    &:hover {
+      color: var(--clr-accent);
+      background-color: transparent;
     }
   }
 }

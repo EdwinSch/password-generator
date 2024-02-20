@@ -1,0 +1,49 @@
+/* Slider track */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--clr-strongGrey);
+  outline: none;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.slider:hover {
+  background: var(--clr-accent);
+}
+
+/* Slider handle (Webkit) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: solid var(--clr-accent) 2px;
+  background: var(--clr-accent);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: var(--clr-strongGrey);
+  border: solid var(--clr-accent) 2px;
+}
+
+/* Slider handle (MOZ) */
+.slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: solid var(--clr-accent) 2px;
+  background: var(--clr-accent);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider::-moz-range-thumb:hover {
+  background: var(--clr-strongGrey);
+  border: solid var(--clr-accent) 2px;
+}
