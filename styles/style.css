@@ -1,4 +1,5 @@
 @import url(./slider-style.css);
+@import url(./checkbox-style.css);
 
 /* --- RESET --- */
 * {
@@ -108,6 +109,14 @@ form {
     .length-output {
       color: var(--clr-accent);
     }
+  }
+
+  .options-container {
+    /* border: var(--inspect); */
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
   }
 
   .submit-btn {
