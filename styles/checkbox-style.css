@@ -70,4 +70,13 @@
   position: absolute;
   left: 45px;
   text-transform: capitalize;
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 600;
+  color: var(--clr-txt-primary);
+
+  @media screen and (max-width: 450px) {
+    left: 35px;
+    font-size: 15px;
+  }
 }

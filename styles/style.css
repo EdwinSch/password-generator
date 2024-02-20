@@ -16,7 +16,7 @@
   --clr-txt-primary: #e6e5ea;
   --clr-txt-secondary: #817d92;
   --clr-accent: #a4ffaf;
-  --clr-warning: #fb7c58;
+  --clr-warning: #f8cd65;
   --clr-negative: #f64a4a;
   --font: "JetBrains Mono", monospace;
   --inspect: solid red 1px;
@@ -58,8 +58,15 @@ main {
 
 /* --- HEADER --- */
 h1 {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 700;
   color: var(--clr-txt-secondary);
   text-align: center;
+
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+  }
 }
 
 /* OUTPUT COMPONENT */
@@ -88,6 +95,16 @@ h1 {
       color: var(--clr-txt-primary);
     }
   }
+
+  @media screen and (max-width: 450px) {
+    margin: 20px 0 15px 0;
+    padding: 22px 15px;
+
+    .output {
+      font-size: 24px;
+      line-height: 31px;
+    }
+  }
 }
 
 /* --- FORM COMPONENT --- */
@@ -97,6 +114,11 @@ form {
   display: flex;
   flex-direction: column;
   gap: 35px;
+
+  @media screen and (max-width: 450px) {
+    padding: 22px 15px;
+    gap: 20px;
+  }
 
   .form-header {
     display: flex;
@@ -109,14 +131,28 @@ form {
     .length-output {
       color: var(--clr-accent);
     }
+
+    @media screen and (max-width: 450px) {
+      & h2 {
+        font-size: 16px;
+      }
+      .length-output {
+        font-size: 24px;
+        line-height: 31px;
+      }
+    }
   }
 
   .options-container {
-    /* border: var(--inspect); */
     height: 170px;
     display: flex;
     flex-direction: column;
     gap: 45px;
+
+    @media screen and (max-width: 450px) {
+      margin-top: 20px;
+      gap: 40px;
+    }
   }
 
   .strength-container {
@@ -126,9 +162,17 @@ form {
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: 450px) {
+      padding: 22px 15px;
+    }
+
     & p {
       color: var(--clr-txt-secondary);
       text-transform: uppercase;
+
+      @media screen and (max-width: 450px) {
+        font-size: 16px;
+      }
     }
 
     .meter-container {
@@ -139,13 +183,31 @@ form {
         margin-right: 10px;
         color: var(--clr-txt-primary);
         text-transform: uppercase;
+
+        @media screen and (max-width: 450px) {
+          margin-right: 2px;
+        }
       }
 
       .led {
         margin-left: 8px;
         width: 10px;
         height: 28px;
-        border: solid white 2px;
+        border: solid var(--clr-txt-primary) 2px;
+      }
+
+      /* --- Inner Meter Colors --- */
+      .weak {
+        background-color: var(--clr-negative);
+        border: solid var(--clr-negative) 2px;
+      }
+      .medium {
+        background-color: var(--clr-warning);
+        border: solid var(--clr-warning) 2px;
+      }
+      .strong {
+        background-color: var(--clr-accent);
+        border: solid var(--clr-accent) 2px;
       }
     }
   }
