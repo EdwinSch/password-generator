@@ -10,6 +10,7 @@ const lengthInput = getElement("#lengthInput");
 const lengthOutput = getElement(".length-output");
 const passwordOutput = getElement(".output");
 const generateBtn = getElement("#submit-btn");
+const strengthMeter = getElement(".meter-container");
 
 /* ---- RUN ON LOAD ---- */
 generateLowerCase();
@@ -20,7 +21,7 @@ getCurrentSliderValue();
 
 /* ---- SCRIPT ---- */
 
-// Track & render slider value
+// Track & render slider value dynamically
 lengthInput.addEventListener("input", function () {
   getCurrentSliderValue();
 });
@@ -37,6 +38,30 @@ generateBtn.addEventListener("click", function (event) {
   passwordOutput.style.color = "#e6e5ea";
 
   // Set strength meter
+  if (password.length <= 6) {
+    strengthMeter.innerHTML = `
+    <h3 class="heading-medium">weak</h3>
+        <div class="led weak"></div>
+        <div class="led"></div>
+        <div class="led"></div>
+    `;
+  }
+  if (password.length > 6 && password.length <= 12) {
+    strengthMeter.innerHTML = `
+     <h3 class="heading-medium">medium</h3>
+        <div class="led medium"></div>
+        <div class="led medium"></div>
+        <div class="led"></div>
+    `;
+  }
+  if (password.length > 12) {
+    strengthMeter.innerHTML = `
+     <h3 class="heading-medium">strong</h3>
+        <div class="led strong"></div>
+        <div class="led strong"></div>
+        <div class="led strong"></div>
+    `;
+  }
 });
 
 /* ---- FUNCTIONS ---- */
