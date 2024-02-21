@@ -79,7 +79,7 @@ h1 {
   background-color: var(--clr-lightGrey);
 
   .output {
-    color: var(--clr-txt-primary);
+    color: var(--clr-txt-secondary);
   }
 
   .clipboard-btn {
@@ -233,9 +233,4 @@ form {
       background-color: transparent;
     }
   }
-}
-
-/* --- MOBILE RESPONSIVE --- */
-@media screen and (max-width: 450px) {
-  /* some class */
 }

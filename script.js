@@ -1,15 +1,64 @@
-/* ---- RUN ON LOAD && INITIALIZERS ---- */
+/* ---- INITIALIZERS ---- */
 let lowerCaseArray;
 let upperCaseArray;
 let numbers;
+let password = "";
 
+let currentSliderValue;
+
+const lengthInput = getElement("#lengthInput");
+const lengthOutput = getElement(".length-output");
+const passwordOutput = getElement(".output");
+const generateBtn = getElement("#submit-btn");
+
+/* ---- RUN ON LOAD ---- */
 generateLowerCase();
-generateUpperCase();
-generateNumbers();
+// generateUpperCase();
+// generateNumbers();
+
+getCurrentSliderValue();
 
 /* ---- SCRIPT ---- */
 
+// Track & render slider value
+lengthInput.addEventListener("input", function () {
+  getCurrentSliderValue();
+});
+
+// Generate BTN functionalities
+generateBtn.addEventListener("click", function (event) {
+  // Prevent btn default
+  event.preventDefault();
+  // Reset current password
+  password = "";
+  // Generate password
+  generatePassword();
+  // Style password output color
+  passwordOutput.style.color = "#e6e5ea";
+
+  // Set strength meter
+});
+
 /* ---- FUNCTIONS ---- */
+
+// Generate password by length input
+function generatePassword() {
+  for (i = 0; i < currentSliderValue; i++) {
+    password = password + lowerCaseArray[getRandomPosition(lowerCaseArray)];
+  }
+  passwordOutput.innerText = password;
+}
+
+// Get slider value
+function getCurrentSliderValue() {
+  currentSliderValue = lengthInput.value;
+  lengthOutput.innerText = currentSliderValue;
+}
+
+// Get random array position
+function getRandomPosition(array) {
+  return Math.floor(Math.random() * array.length);
+}
 
 // Generate lowercase array
 function generateLowerCase() {
