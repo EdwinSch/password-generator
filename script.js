@@ -10,6 +10,7 @@ const lengthInput = getElement("#lengthInput");
 const lengthOutput = getElement(".length-output");
 const passwordOutput = getElement(".output");
 const generateBtn = getElement("#submit-btn");
+const clipboardBtn = getElement("#clipboard-btn");
 const strengthMeter = getElement(".meter-container");
 
 /* ---- RUN ON LOAD ---- */
@@ -36,32 +37,17 @@ generateBtn.addEventListener("click", function (event) {
   generatePassword();
   // Style password output color
   passwordOutput.style.color = "#e6e5ea";
-
   // Set strength meter
-  if (password.length <= 6) {
-    strengthMeter.innerHTML = `
-    <h3 class="heading-medium">weak</h3>
-        <div class="led weak"></div>
-        <div class="led"></div>
-        <div class="led"></div>
-    `;
-  }
-  if (password.length > 6 && password.length <= 12) {
-    strengthMeter.innerHTML = `
-     <h3 class="heading-medium">medium</h3>
-        <div class="led medium"></div>
-        <div class="led medium"></div>
-        <div class="led"></div>
-    `;
-  }
-  if (password.length > 12) {
-    strengthMeter.innerHTML = `
-     <h3 class="heading-medium">strong</h3>
-        <div class="led strong"></div>
-        <div class="led strong"></div>
-        <div class="led strong"></div>
-    `;
-  }
+  setStrengthMeter();
+});
+
+// Clipboard BTN
+clipboardBtn.addEventListener("click", function () {
+  navigator.clipboard.writeText(password);
+  passwordOutput.style.color = "#a4ffaf";
+  setTimeout(() => {
+    passwordOutput.style.color = "#e6e5ea";
+  }, 800);
 });
 
 /* ---- FUNCTIONS ---- */
@@ -105,6 +91,34 @@ function generateUpperCase() {
 function generateNumbers() {
   numbers = Array.from(Array(10).keys());
   return numbers;
+}
+
+//Set Strengh meter
+function setStrengthMeter() {
+  if (password.length <= 6) {
+    strengthMeter.innerHTML = `
+    <h3 class="heading-medium">weak</h3>
+        <div class="led weak"></div>
+        <div class="led"></div>
+        <div class="led"></div>
+    `;
+  }
+  if (password.length > 6 && password.length <= 12) {
+    strengthMeter.innerHTML = `
+     <h3 class="heading-medium">medium</h3>
+        <div class="led medium"></div>
+        <div class="led medium"></div>
+        <div class="led"></div>
+    `;
+  }
+  if (password.length > 12) {
+    strengthMeter.innerHTML = `
+     <h3 class="heading-medium">strong</h3>
+        <div class="led strong"></div>
+        <div class="led strong"></div>
+        <div class="led strong"></div>
+    `;
+  }
 }
 
 // Global getElement function
