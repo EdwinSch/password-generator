@@ -39,6 +39,8 @@ generateBtn.addEventListener("click", function (event) {
   passwordOutput.style.color = "#e6e5ea";
   // Set strength meter
   setStrengthMeter();
+  // Enable clipboard button
+  clipboardBtn.removeAttribute("disabled");
 });
 
 // Clipboard BTN
