@@ -1,8 +1,26 @@
 /* ---- INITIALIZERS ---- */
 let lowerCaseArray;
 let upperCaseArray;
-let numbers;
+let numbersArray;
 let password = "";
+
+const symbolsArray = [
+  "!",
+  "#",
+  "$",
+  "%",
+  "&",
+  "*",
+  "+",
+  "-",
+  "/",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "~",
+];
 
 let currentSliderValue;
 
@@ -15,8 +33,8 @@ const strengthMeter = getElement(".meter-container");
 
 /* ---- RUN ON LOAD ---- */
 generateLowerCase();
-// generateUpperCase();
-// generateNumbers();
+generateUpperCase();
+generateNumbers();
 
 getCurrentSliderValue();
 
@@ -41,6 +59,8 @@ generateBtn.addEventListener("click", function (event) {
   setStrengthMeter();
   // Enable clipboard button
   clipboardBtn.removeAttribute("disabled");
+
+  //----- TEST AREA
 });
 
 // Clipboard BTN
@@ -56,6 +76,11 @@ clipboardBtn.addEventListener("click", function () {
 
 // Generate password by length input
 function generatePassword() {
+  const upperCaseCheck = getElement("#uppercase").checked;
+  const numbersCheck = getElement("#numbers").checked;
+  const symbolsCheck = getElement("#symbols").checked;
+  // console.log(upperCaseCheck, numbersCheck, symbolsCheck);
+
   for (i = 0; i < currentSliderValue; i++) {
     password = password + lowerCaseArray[getRandomPosition(lowerCaseArray)];
   }
@@ -91,8 +116,9 @@ function generateUpperCase() {
 
 // Generate number array
 function generateNumbers() {
-  numbers = Array.from(Array(10).keys());
-  return numbers;
+  const createNumbers = Array.from(Array(10).keys());
+  numbersArray = createNumbers.map(String);
+  return numbersArray;
 }
 
 //Set Strengh meter
@@ -104,21 +130,19 @@ function setStrengthMeter() {
         <div class="led"></div>
         <div class="led"></div>
     `;
-  }
-  if (password.length > 6 && password.length <= 12) {
-    strengthMeter.innerHTML = `
-     <h3 class="heading-medium">medium</h3>
-        <div class="led medium"></div>
-        <div class="led medium"></div>
-        <div class="led"></div>
-    `;
-  }
-  if (password.length > 12) {
+  } else if (password.length > 12) {
     strengthMeter.innerHTML = `
      <h3 class="heading-medium">strong</h3>
         <div class="led strong"></div>
         <div class="led strong"></div>
         <div class="led strong"></div>
+    `;
+  } else {
+    strengthMeter.innerHTML = `
+     <h3 class="heading-medium">medium</h3>
+        <div class="led medium"></div>
+        <div class="led medium"></div>
+        <div class="led"></div>
     `;
   }
 }
