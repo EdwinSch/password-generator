@@ -1,28 +1,6 @@
-/* ---- INITIALIZERS ---- */
-let lowerCaseArray;
-let upperCaseArray;
-let numbersArray;
-let password = "";
-
-const symbolsArray = [
-  "!",
-  "#",
-  "$",
-  "%",
-  "&",
-  "*",
-  "+",
-  "-",
-  "/",
-  "<",
-  "=",
-  ">",
-  "?",
-  "@",
-  "~",
-];
-
+/* ---- INITIALIZERS && TARGETS ---- */
 let currentSliderValue;
+let password;
 
 const lengthInput = getElement("#lengthInput");
 const lengthOutput = getElement(".length-output");
@@ -32,10 +10,6 @@ const clipboardBtn = getElement("#clipboard-btn");
 const strengthMeter = getElement(".meter-container");
 
 /* ---- RUN ON LOAD ---- */
-generateLowerCase();
-generateUpperCase();
-generateNumbers();
-
 getCurrentSliderValue();
 
 /* ---- SCRIPT ---- */
@@ -52,15 +26,16 @@ generateBtn.addEventListener("click", function (event) {
   // Reset current password
   password = "";
   // Generate password
-  generatePassword();
+  password = generatePassword(8, true, true, true, true);
+  console.log(password);
+  // Set Password
+  passwordOutput.innerText = password;
   // Style password output color
   passwordOutput.style.color = "#e6e5ea";
   // Set strength meter
   setStrengthMeter();
   // Enable clipboard button
   clipboardBtn.removeAttribute("disabled");
-
-  //----- TEST AREA
 });
 
 // Clipboard BTN
@@ -74,51 +49,51 @@ clipboardBtn.addEventListener("click", function () {
 
 /* ---- FUNCTIONS ---- */
 
-// Generate password by length input
-function generatePassword() {
-  const upperCaseCheck = getElement("#uppercase").checked;
-  const numbersCheck = getElement("#numbers").checked;
-  const symbolsCheck = getElement("#symbols").checked;
-  // console.log(upperCaseCheck, numbersCheck, symbolsCheck);
+function generatePassword(
+  length,
+  includeLowercase,
+  includeUppercase,
+  includeNumbers,
+  includeSymbols
+) {
+  const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numberChars = "0123456789";
+  const symbolChars = "!@#$%^&*()-=_+[]{}|;:,.<>?/";
 
-  for (i = 0; i < currentSliderValue; i++) {
-    password = password + lowerCaseArray[getRandomPosition(lowerCaseArray)];
+  let allChars = "";
+  let password = "";
+
+  if (includeLowercase) {
+    allChars += lowercaseChars;
   }
-  passwordOutput.innerText = password;
+  if (includeUppercase) {
+    allChars += uppercaseChars;
+  }
+  if (includeNumbers) {
+    allChars += numberChars;
+  }
+  if (includeSymbols) {
+    allChars += symbolChars;
+  }
+
+  if (allChars.length === 0) {
+    console.error("At least one character set must be selected.");
+    return null;
+  }
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allChars.length);
+    password += allChars.charAt(randomIndex);
+  }
+
+  return password;
 }
 
 // Get slider value
 function getCurrentSliderValue() {
   currentSliderValue = lengthInput.value;
   lengthOutput.innerText = currentSliderValue;
-}
-
-// Get random array position
-function getRandomPosition(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-// Generate lowercase array
-function generateLowerCase() {
-  lowerCaseArray = Array.from({ length: 26 }, (_, index) =>
-    String.fromCharCode("a".charCodeAt(0) + index)
-  );
-  return lowerCaseArray;
-}
-
-// Generate uppercase array
-function generateUpperCase() {
-  upperCaseArray = Array.from({ length: 26 }, (_, index) =>
-    String.fromCharCode("A".charCodeAt(0) + index)
-  );
-  return upperCaseArray;
-}
-
-// Generate number array
-function generateNumbers() {
-  const createNumbers = Array.from(Array(10).keys());
-  numbersArray = createNumbers.map(String);
-  return numbersArray;
 }
 
 //Set Strengh meter
