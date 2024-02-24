@@ -25,8 +25,20 @@ generateBtn.addEventListener("click", function (event) {
   event.preventDefault();
   // Reset current password
   password = "";
-  // Generate password
-  password = generatePassword(8, true, true, true, true);
+  // Get checked options
+  const lowerCaseCheck = getElement("#lowercase").checked;
+  const upperCaseCheck = getElement("#uppercase").checked;
+  const numbersCheck = getElement("#numbers").checked;
+  const symbolsCheck = getElement("#symbols").checked;
+
+  // --- Generate password
+  password = generatePassword(
+    currentSliderValue,
+    lowerCaseCheck,
+    upperCaseCheck,
+    numbersCheck,
+    symbolsCheck
+  );
   console.log(password);
   // Set Password
   passwordOutput.innerText = password;
@@ -62,7 +74,7 @@ function generatePassword(
   const symbolChars = "!@#$%^&*()-=_+[]{}|;:,.<>?/";
 
   let allChars = "";
-  let password = "";
+  password = "";
 
   if (includeLowercase) {
     allChars += lowercaseChars;
@@ -78,8 +90,7 @@ function generatePassword(
   }
 
   if (allChars.length === 0) {
-    console.error("At least one character set must be selected.");
-    return null;
+    password = "";
   }
 
   for (let i = 0; i < length; i++) {
@@ -96,9 +107,14 @@ function getCurrentSliderValue() {
   lengthOutput.innerText = currentSliderValue;
 }
 
-//Set Strengh meter
+//Set Strengh meter and inner PW output
 function setStrengthMeter() {
-  if (password.length <= 6) {
+  // check for empty pw/selections
+  if (password.length === 0) {
+    passwordOutput.innerHTML = `<p class="error">Select at least one character set</p>`;
+  }
+  // meter options
+  else if (password.length <= 6) {
     strengthMeter.innerHTML = `
     <h3 class="heading-medium">weak</h3>
         <div class="led weak"></div>
