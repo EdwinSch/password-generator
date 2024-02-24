@@ -1,7 +1,21 @@
-### Main Title
+## Password Generator
 
-## Sub Heading/Title
+This project is a strong random password generator. Users set the length and opt for lowercase, uppercase, numbers an/or symbol combinations. A clipboard functionality is also added.
 
-Lorem Ipsum
+### Live Demo
 
-🚀 [SOME LINK](https://google.com)
+🚀 [Deployed App](https://edwinsch.github.io/password-generator/)
+
+#### 🛠️ Build with
+
+- HTML
+- CSS
+- JavaScript
+
+#### 💻 Run this project
+
+```
+git clone [repo]
+npm install
+npm run dev
+```
