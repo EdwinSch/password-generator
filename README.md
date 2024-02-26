@@ -16,6 +16,5 @@ This project is a strong random password generator. Users set the length and opt
 
 ```
 git clone [repo]
-npm install
-npm run dev
+run index with a live server
 ```

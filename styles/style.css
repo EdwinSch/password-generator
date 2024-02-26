@@ -136,7 +136,7 @@ form {
     justify-content: space-between;
     align-items: center;
 
-    & h2 {
+    .slider-label {
       text-transform: capitalize;
     }
     .length-output {
@@ -144,7 +144,7 @@ form {
     }
 
     @media screen and (max-width: 450px) {
-      & h2 {
+      .slider-label {
         font-size: 16px;
       }
       .length-output {
